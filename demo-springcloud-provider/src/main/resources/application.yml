@@ -1,0 +1,22 @@
+server:
+  port: 1051
+  tomcat:
+   max-threads: 50 # tomcat 线程数（50 比较小，只是本地测试用）
+
+spring:
+  application:
+    name: demo-springcloud-provider
+  zipkin:
+    base-url: http://localhost:1061    
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${spring.cloud.client.ipAddress}:${server.port}}
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health

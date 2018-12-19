@@ -1,0 +1,6 @@
+server:
+  port: 1091
+
+management:
+  security:
+    enabled: false   

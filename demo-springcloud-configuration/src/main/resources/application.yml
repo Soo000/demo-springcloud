@@ -1,0 +1,44 @@
+server:
+  port: 8888
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka 
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${spring.cloud.client.ipAddress}:${server.port}}       
+  
+#encrypt:
+#  key: mykey
+encrypt:  
+  keyStore:
+    location: classpath:/wang.keystore
+    password: 123321 # 密钥库密码
+    alias: wangke0809 # 密钥对的别名
+    secret: 123321 # 密钥口令
+
+spring:
+  application:
+    name: demo-springcloud-config-server
+  profiles:
+    active: native
+#    active: subversion
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: classpath:/conf
+#        svn:
+#          uri: svn://www.kkwrite.com/demo-springcloud-config
+#          username: wangke
+#          password: wangke0809
+        default-label: conf
+        health:
+          repositories:
+            test-service:
+              label: conf
+#security:
+#  user:
+#    name: root
+#    password: root

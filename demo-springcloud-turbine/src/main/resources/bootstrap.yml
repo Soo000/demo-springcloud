@@ -1,0 +1,23 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${spring.cloud.client.ipAddress}:${server.port}}
+
+spring:
+  application:
+    name: demo-springcloud-turbine
+  cloud:
+    config:
+      #username: root
+      #password: root
+      failFast: true
+      discovery: 
+        enabled: true
+        service-id: demo-springcloud-config-server
+      #uri: http://localhost:8888
+      profile: dev
+      name: demo-springcloud-turbine # 会读取 demo-springcloud-turbine-dev.yml 的配置文件
+      #label: client-label
