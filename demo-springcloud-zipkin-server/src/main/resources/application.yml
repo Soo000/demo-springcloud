@@ -1,6 +1,0 @@
-server:
-  port: 1061
-
-spring:
-  application:
-    name: demo-springcloud-zipkin-server

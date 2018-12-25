@@ -1,35 +1,33 @@
 package com.kkwrite.demo.provider.controller.user;
 
-import java.util.Calendar;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kkwrite.demo.provider.entity.user.User;
+import com.kkwrite.demo.provider.dto.OutDTO;
+import com.kkwrite.demo.provider.dto.user.UserDTO;
+import com.kkwrite.demo.provider.exception.ServiceException;
+import com.kkwrite.demo.provider.service.user.UserService;
 
 @RestController
 @RequestMapping("/userservice")
 public class UserController {
 
-	@GetMapping("/queryuserbyid")
-	public User queryUserById(Integer userId, String username) {
-		User user = new User(userId, username);
-		user.setCreationTime(Calendar.getInstance().getTime());
-		return user;
-	}
+	@Autowired
+	private UserService userService;
 	
-	@GetMapping("/queryuserbyid2")
-	public User queryUserById2(Integer userId, String username) {
-		User user = new User(userId, username);
-		user.setCreationTime(Calendar.getInstance().getTime());
-		// 模拟业务处理需要3秒
+	@GetMapping("/getUserById/{userId}")
+	public OutDTO getUserById(@PathVariable Long userId) {
+		OutDTO outDTO = new OutDTO();
 		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
+			UserDTO userDTO = userService.getUserById(userId);
+			outDTO.setData(userDTO);
+		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
-		return user;
+		return outDTO;
 	}
 	
 }

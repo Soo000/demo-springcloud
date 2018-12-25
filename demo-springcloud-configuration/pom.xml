@@ -38,4 +38,20 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 	</dependencies>
+	<build>
+        <!-- 
+        <finalName>demo-springcloud-configuration</finalName>
+        -->
+        <plugins>
+            <!-- 热部署插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 如果没有 fork 项配置，devtools 不会起作用 -->
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

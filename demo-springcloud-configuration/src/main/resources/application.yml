@@ -20,7 +20,7 @@ encrypt:
 
 spring:
   application:
-    name: demo-springcloud-config-server
+    name: demo-springcloud-configuration
   profiles:
     active: native
 #    active: subversion

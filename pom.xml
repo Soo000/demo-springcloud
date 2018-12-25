@@ -50,8 +50,6 @@
 		<module>demo-springcloud-zuul</module>
 		<module>demo-springcloud-configuration</module>
 		<module>demo-springcloud-turbine</module>
-		<module>demo-springcloud-sleuth</module>
 		<module>demo-springcloud-bus</module>
-		<module>demo-springcloud-zipkin-server</module>
 	</modules>
 </project>
