@@ -1,0 +1,33 @@
+server:
+  port: 1031
+  tomcat:
+   max-threads: 50 # tomcat 线程数（50 比较小，只是本地测试用）
+
+spring:
+  application:
+    name: demo-springcloud-consumer
+  zipkin:
+    base-url: http://192.168.1.114:9411
+  sleuth:
+    sampler:
+      probability: 1 # 采样比例，开发环境配置1，生成环境配置0.1
+      
+feign:
+  hystrix:
+    enabled: true
+    
+hystrix:
+#  threadpool:
+#    default:
+#      coreSize: 10  #并发执行的最大线程数，默认10  
+#  command:
+#    paas-file:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 3600000
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000  #命令执行超时时间，默认1000ms        

@@ -13,6 +13,9 @@ zuul:
     provider:
       path: /api/v1/provider/**
       service-id: demo-springcloud-provider
+    product:
+      path: /api/v1/product/**
+      service-id: demo-springcloud-product      
       
 management:
   security:

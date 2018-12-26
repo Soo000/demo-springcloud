@@ -1,0 +1,21 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${spring.cloud.client.ip-address}:${server.port}}
+    #statusPageUrlPath: ${management.context-path}/info
+    #healthCheckUrlPath: ${management.context-path}/health    
+
+spring:
+  cloud:
+    config:
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: demo-springcloud-configuration
+      profile: dev
+      name: ds-mysql,demo-springcloud-product

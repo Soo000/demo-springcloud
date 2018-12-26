@@ -1,6 +1,5 @@
 package com.kkwrite.demo.consumer.ctrl;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -11,10 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.kkwrite.demo.consumer.clients.user.UserFeignClient;
+import com.kkwrite.demo.product.dto.OutDTO;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
-@RequestMapping("/userctrl")
+@RequestMapping("/user")
 public class UserCtrl {
 	
 	private Logger logger = Logger.getLogger(UserCtrl.class);
@@ -25,21 +25,21 @@ public class UserCtrl {
 	private UserFeignClient userFeignClient;
 
 	// zuul 代理地址前缀
-	private final String proxyPrefix = "http://demo-springcloud-zuul/my-provider/userservice";
-	// 服务地址前缀
-	private final String prefix = "http://demo-springcloud-provider/userservice";
+	private final String proxyPrefix = "http://demo-springcloud-zuul/api/v1/provider";
 
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@GetMapping("/qryuserbyid")
+	@GetMapping("/qryUserById")
 	@HystrixCommand(fallbackMethod = "qryUserByIdFallBack")
-	public Map<String, Object> qryUserById(Integer userId, String username) {
+	public OutDTO qryUserById(Integer userId, String username) {
 		logger.info("[ begin ] UserCtrl.qryUserById().");
-		String url = prefix + "/queryuserbyid?userId=" + userId + "&username=" + username;
-		Map<String, Object> result = restTemplate.getForObject(url, Map.class);
-		logger.info("[ end ] UserCtrl.qryUserById(), result = " + result);
-		return result;
+		
+		String url = proxyPrefix + "/user/getUserById/1";
+		OutDTO outDTO = restTemplate.getForObject(url, OutDTO.class);
+		
+		logger.info("[ end ] UserCtrl.qryUserById(), outDTO = " + outDTO);
+		return outDTO;
 	}
 	
 	/**
@@ -48,21 +48,25 @@ public class UserCtrl {
 	 * @param username
 	 * @return
 	 */
-	public Map<String, Object> qryUserByIdFallBack(Integer userId, String username) {
+	public OutDTO qryUserByIdFallBack(Integer userId, String username) {
 		logger.info("[ begin ] UserCtrl.qryUserByIdFallBack().");
-		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("retCode", "1001");
-		result.put("retMsg", "服务调用超时，请稍后重试！");
+		
+		OutDTO outDTO = new OutDTO();
+		outDTO.setRetCode("1001");
+		outDTO.setRetMsg("服务调用超时，请稍后重试！");
+		
 		logger.info("[ end ] UserCtrl.qryUserByIdFallBack().");
-		return result;
+		return outDTO;
 	}
 	
 	@GetMapping("/qryuserbyid2")
 	public Map<String, Object> qryUserById2(Integer userId, String username) {
-		i++;
 		logger.info("[ begin ] UserCtrl.qryUserById2(), i = " + i);
-		String url = prefix + "/queryuserbyid2?userId=" + userId + "&username=" + username + "&token=1";
+		
+		i++;
+		String url = proxyPrefix + "/queryuserbyid2?userId=" + userId + "&username=" + username + "&token=1";
 		Map<String, Object> result = restTemplate.getForObject(url, Map.class);
+
 		logger.info("[ end ] UserCtrl.qryUserById2(), result = " + result);
 		return result;
 	}

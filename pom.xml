@@ -46,10 +46,12 @@
 	<modules>
 		<module>demo-springcloud-eureka</module>
 		<module>demo-springcloud-consumer</module>
-		<module>demo-springcloud-provider</module>
 		<module>demo-springcloud-zuul</module>
+		<module>demo-springcloud-provider</module>
+		<module>demo-springcloud-product</module>
 		<module>demo-springcloud-configuration</module>
 		<module>demo-springcloud-turbine</module>
 		<module>demo-springcloud-bus</module>
+		<module>demo-springcloud-common</module>
 	</modules>
 </project>
