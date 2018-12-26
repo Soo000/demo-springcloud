@@ -1,0 +1,10 @@
+server:
+  port: 1051
+  tomcat:
+   max-threads: 50 # tomcat 线程数（50 比较小，只是本地测试用）
+
+spring:
+  application:
+    name: demo-springcloud-provider
+#  zipkin:
+#    base-url: http://localhost:1061

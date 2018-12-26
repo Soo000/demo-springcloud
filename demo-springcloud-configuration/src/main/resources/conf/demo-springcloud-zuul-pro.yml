@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ics-gateway
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    provider:
+      path: /api/v3/provider/**
+      serviceId: ics-provider

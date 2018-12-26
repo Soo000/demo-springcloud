@@ -1,5 +1,7 @@
 package com.kkwrite.demo.provider.controller.user;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,11 +17,17 @@ import com.kkwrite.demo.provider.service.user.UserService;
 @RequestMapping("/userservice")
 public class UserController {
 
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	private UserService userService;
 	
 	@GetMapping("/getUserById/{userId}")
 	public OutDTO getUserById(@PathVariable Long userId) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("UserController.getUserById(Long userId); userId = {}", userId);			
+		}
+		
 		OutDTO outDTO = new OutDTO();
 		try {
 			UserDTO userDTO = userService.getUserById(userId);

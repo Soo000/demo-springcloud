@@ -30,7 +30,9 @@ public class UserServiceImpl implements UserService {
 		try {
 			UserDO userDO = userRepository.findByUserId(userId);
 			userDTO = new UserDTO();
-			BeanUtils.copyProperties(userDO, userDTO);
+			if (userDO != null) {
+				BeanUtils.copyProperties(userDO, userDTO);
+			}
 		} catch (Exception e) {
 			throw e;
 		}

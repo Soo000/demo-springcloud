@@ -1,0 +1,19 @@
+server:
+  port: 1041
+  tomcat:
+   max-threads: 50 # tomcat 线程数（50 比较小，只是本地测试用）
+   
+spring:
+  application:
+    name: demo-springcloud-zuul
+    
+zuul:
+  ignoredServices: '*'
+  routes:
+    provider:
+      path: /api/v1/provider/**
+      service-id: demo-springcloud-provider
+      
+management:
+  security:
+    enabled: false      

@@ -15,7 +15,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	/**
-	 * 自定义jdbc权限认证，使用自定义表
+	 * 自定义jdbc权限认证
 	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {

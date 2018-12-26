@@ -1,17 +1,19 @@
 eureka:
   client:
-    service-url:
+    serviceUrl:
       defaultZone: http://localhost:8761/eureka
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${spring.cloud.client.ipAddress}:${server.port}}
-    
+      
 spring:
   cloud:
     config:
+      #username: root
+      #password: root
       fail-fast: true
-      discovery:
+      discovery: 
         enabled: true
         service-id: demo-springcloud-configuration
       profile: dev
-      name: ds-mysql,demo-springcloud-provider
+      name: demo-springcloud-zuul # 会读取 demo-springcloud-zuul-dev.yml 的配置文件      
