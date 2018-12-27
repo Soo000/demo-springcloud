@@ -1,10 +1,14 @@
 eureka:
   client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka 
+    healthcheck:
+      enabled: true
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${spring.cloud.client.ipAddress}:${server.port}}
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${spring.cloud.client.ipAddress}:${server.port}}
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
     
 spring:
   cloud:
@@ -14,4 +18,4 @@ spring:
         enabled: true
         service-id: demo-springcloud-configuration
       profile: dev
-      name: demo-springcloud-consumer
+      name: demo-springcloud-consumer    

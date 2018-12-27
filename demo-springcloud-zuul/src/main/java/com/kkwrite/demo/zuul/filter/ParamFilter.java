@@ -1,7 +1,5 @@
 package com.kkwrite.demo.zuul.filter;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -36,12 +34,12 @@ public class ParamFilter extends ZuulFilter {
 
 	@Override
 	public boolean shouldFilter() {
-		return true; // 是否执行该过滤器，此处为true，说明需要过滤
+		return false; // 是否执行该过滤器，此处为true，说明需要过滤
 	}
 
 	@Override
 	public int filterOrder() {
-		return 0; // // 优先级为0，数字越大，优先级越低
+		return 0; // 优先级为0，数字越小，优先级越高
 	}
 
 	/**

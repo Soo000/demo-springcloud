@@ -14,15 +14,15 @@
 	<name>demo-springcloud-consumer</name>
 	<url>http://maven.apache.org</url>
 	
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
+		<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -35,14 +35,19 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
 		</dependency>
 		<dependency>  
             <groupId>org.springframework.cloud</groupId>  
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>  
-		</dependency>
+		</dependency> -->
+		<!-- spring-cloud-starter-zipkin(包含 spring-cloud-starter-sleuth) -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
 		<!-- demo-springcloud-common -->
         <dependency>
             <groupId>com.kkwrite.demo</groupId>

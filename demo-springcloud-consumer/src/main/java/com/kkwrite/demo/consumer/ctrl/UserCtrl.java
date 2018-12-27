@@ -2,7 +2,8 @@ package com.kkwrite.demo.consumer.ctrl;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,13 +12,13 @@ import org.springframework.web.client.RestTemplate;
 
 import com.kkwrite.demo.consumer.clients.user.UserFeignClient;
 import com.kkwrite.demo.product.dto.OutDTO;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+//import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @RequestMapping("/user")
 public class UserCtrl {
 	
-	private Logger logger = Logger.getLogger(UserCtrl.class);
+	private Logger logger = LoggerFactory.getLogger(UserCtrl.class);
 	
 	private volatile int i = 0;
 	
@@ -31,7 +32,7 @@ public class UserCtrl {
 	private RestTemplate restTemplate;
 	
 	@GetMapping("/qryUserById")
-	@HystrixCommand(fallbackMethod = "qryUserByIdFallBack")
+//	@HystrixCommand(fallbackMethod = "qryUserByIdFallBack")
 	public OutDTO qryUserById(Integer userId, String username) {
 		logger.info("[ begin ] UserCtrl.qryUserById().");
 		
