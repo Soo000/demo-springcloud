@@ -35,20 +35,22 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-feign</artifactId>
 		</dependency>
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-hystrix</artifactId>
 		</dependency>
+		<!-- 
 		<dependency>  
             <groupId>org.springframework.cloud</groupId>  
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>  
-		</dependency> -->
+		</dependency>
+		-->
 		<!-- spring-cloud-starter-zipkin(包含 spring-cloud-starter-sleuth) -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
-		<!-- demo-springcloud-common -->
+        <!-- demo-springcloud-common -->
         <dependency>
             <groupId>com.kkwrite.demo</groupId>
             <artifactId>demo-springcloud-common</artifactId>
@@ -60,7 +62,7 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
             <scope>true</scope>
-        </dependency>		
+        </dependency>
 	</dependencies>
 	
 	<build>

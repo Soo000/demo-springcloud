@@ -13,8 +13,8 @@ public class OutDTO implements Serializable {
 
 	private static final long serialVersionUID = 4877130826999288934L;
 	
-	private static final String DEFAULT_RETURN_CODE = "0001";
-	private static final String DEFAULT_RETURN_MSG = "success";
+	public static final String SUCCESS_RETURN_CODE = "0001";
+	public static final String SUCCESS_RETURN_MSG = "success";
 	
 	private String retCode;
 	private String retMsg;
@@ -22,8 +22,8 @@ public class OutDTO implements Serializable {
 	private Object data;
 	
 	public OutDTO() {
-		retCode = DEFAULT_RETURN_CODE;
-		retMsg = DEFAULT_RETURN_MSG;
+		retCode = SUCCESS_RETURN_CODE;
+		retMsg = SUCCESS_RETURN_MSG;
 	}
 	
 	public OutDTO(String retCode, String retMsg) {

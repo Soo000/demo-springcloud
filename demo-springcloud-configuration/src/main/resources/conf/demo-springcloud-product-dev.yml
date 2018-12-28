@@ -10,4 +10,5 @@ spring:
     base-url: http://192.168.1.114:9411
   sleuth:
     sampler:
-      probability: 1 # 采样比例，开发环境配置1，生成环境配置0.1
+      #probability: 1 # 采样比例，开发环境配置1，生成环境配置0.1
+      percentage: 1.0

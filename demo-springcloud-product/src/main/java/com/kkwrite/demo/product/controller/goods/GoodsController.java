@@ -38,7 +38,34 @@ public class GoodsController {
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
+		
 		return outDTO;
+	}
+	
+	@GetMapping("/findGoodsById/{goodsId}")
+	public GoodsDTO findGoodsById(@PathVariable Long goodsId) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("UserController.getUserById(Long userId); userId = {}", goodsId);			
+		}
+		
+		GoodsDTO goodsDTO = new GoodsDTO();
+		try {
+			//goodsDTO = goodsService.getGoodsById(goodsId);
+			goodsDTO.setGoodsId(1L);
+			goodsDTO.setGoodsName("三星笔记本内存条 DDR4 128G    第5次调用");
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			logger.info("商品服务 findGoodsById 准备进入休眠...");
+			Thread.currentThread().sleep(3000);
+			logger.info("商品服务 findGoodsById 休眠结束");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		return goodsDTO;
 	}
 	
 }

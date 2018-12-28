@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.kkwrite.demo.product.dto.OutDTO;
-//import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @RequestMapping("/goods")
@@ -24,7 +24,7 @@ public class GoodsCtrl {
 	private RestTemplate restTemplate;
 	
 	@GetMapping("/qryGoodsById")
-//	@HystrixCommand(fallbackMethod = "qryGoodsByIdFallBack")
+	@HystrixCommand(fallbackMethod = "qryGoodsByIdFallBack")
 	public OutDTO qryGoodsById(Long goodsId) {
 		logger.info("[ begin ] GoodsCtrl.qryGoodsById().");
 		
