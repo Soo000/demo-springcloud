@@ -57,13 +57,13 @@ public class GoodsController {
 			e.printStackTrace();
 		}
 		
-		try {
+		/*try {
 			logger.info("商品服务 findGoodsById 准备进入休眠...");
-			Thread.currentThread().sleep(3000);
+			Thread.currentThread().sleep(4000);
 			logger.info("商品服务 findGoodsById 休眠结束");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		return goodsDTO;
 	}
