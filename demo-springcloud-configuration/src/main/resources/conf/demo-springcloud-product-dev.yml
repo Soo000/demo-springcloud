@@ -12,3 +12,11 @@ spring:
     sampler:
       #probability: 1 # 采样比例，开发环境配置1，生成环境配置0.1
       percentage: 1.0
+      
+management:
+  security:
+    enabled: false # 关闭验证
+  endpoints: # 开放监控端口
+    web:
+      exposure:
+        include: "*"      

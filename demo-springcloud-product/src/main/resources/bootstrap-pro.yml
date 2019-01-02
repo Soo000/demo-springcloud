@@ -18,4 +18,4 @@ spring:
         enabled: true
         service-id: demo-springcloud-configuration
       profile: dev
-      name: ds-mysql,demo-springcloud-product
+      name: ds-mysql,mq-rabbitmq,demo-springcloud-product
