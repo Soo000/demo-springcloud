@@ -36,9 +36,16 @@ feign:
         connectTimeout: 10000
         readTimeout: 10000
 
+
 management:
-  endpoints:
+  security:
+    enabled: false # 关闭验证
+  endpoints: # 开放监控端口
     web:
       exposure:
         include: "*"
+  
+# 自定义配置
+provider:
+  param: paramvalue3
       
